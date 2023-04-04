@@ -7,7 +7,7 @@ const app = express();
 app.use (bodyParser.json());
 app.use(cors());
 
-const commentsByPostId = {};
+const commentsByPostId: {[index: string]: Array<object>} = {};
 
 app.get('/posts/:id/comments', (req, res) => {
     res.send(commentsByPostId[req.params.id] || []);

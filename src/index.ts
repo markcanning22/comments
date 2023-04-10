@@ -42,7 +42,7 @@ app.post('/posts/:id/comments', async (req: Request, res: Response): Promise<voi
 
     comment.postId = req.params.id;
 
-    await axios.post('http://event-bus-clusterip-srv:4005/events', {
+    await axios.post('http://event-bus-srv:4005/events', {
         type: 'CommentCreated',
         data: comment
     });
@@ -69,7 +69,7 @@ app.post('/events', async (req: Request, res: Response): Promise<Response | unde
 
         comment.status = status;
 
-        await axios.post('http://event-bus-clusterip-srv:4005/events', {
+        await axios.post('http://event-bus-srv:4005/events', {
             type: 'CommentUpdated',
             data: {
                 id,
